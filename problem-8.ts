@@ -13,7 +13,7 @@
     -------------------------------------------------------------------------------------
  */
 
-    const validateKeys = <T>(obj : T, keys: (keyof T) []): boolean => {
+    const validateKeys = <T extends Record<string, unknown>>(obj : T, keys: (keyof T) []): boolean => {
       return keys.every(key => key in obj);
       
 

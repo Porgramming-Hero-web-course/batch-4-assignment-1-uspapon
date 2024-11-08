@@ -23,10 +23,39 @@
  */
 
     type Circle = {
+      shape: "circle";
       radius: number;
     }
 
     type Rectangle = {
-      weight: number;
+      shape: "rectangle"
+      width: number;
       height: number;
     }
+
+    type Shape = Circle | Rectangle; 
+
+    const calculateShapeArea = (shape : Shape) : number => {
+      if( "radius" in shape){
+         const area = (Math.PI * shape.radius * shape.radius).toFixed(2);
+         return parseFloat(area);
+      }else if ("width" in shape && "height" in shape){
+         return shape.height * shape.width;
+      }
+
+      return 0; 
+    };
+
+    const circleArea = calculateShapeArea({ shape: "circle", radius: 5 });
+    console.log(circleArea);
+
+    const rectangleArea = calculateShapeArea({
+      shape: "rectangle",
+      width: 4,
+      height: 6,
+      });
+
+   console.log(rectangleArea);
+
+
+
